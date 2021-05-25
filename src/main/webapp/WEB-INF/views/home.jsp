@@ -57,7 +57,7 @@
                         distinctio fugiat libero eos reiciendis omnis labore, facilis, consequuntur delectus
                         quidem
                         repudiandae? Ab tenetur ipsam nihil enim!</p>
-                    <button class="c-btn c-btn-primary">Open in browser</button>
+                    <button href="/signin" class="c-btn c-btn-primary">Open in browser</button>
                 </div>
             </section>
             <section id="about" class="row">

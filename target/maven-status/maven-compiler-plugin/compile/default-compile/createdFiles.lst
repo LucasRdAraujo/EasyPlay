@@ -1,3 +1,4 @@
+br\edu\infnet\easyplay\dao\UserDAO.class
 br\edu\infnet\easyplay\repository\UserRepository.class
 br\edu\infnet\easyplay\controller\SignUpController.class
 br\edu\infnet\easyplay\model\AuthForm.class

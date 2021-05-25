@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.infnet.easyplay.model.AuthForm;
 import br.edu.infnet.easyplay.model.User;
@@ -27,7 +27,7 @@ public class SignInController {
 		return "signin";
 	}
 
-	@PostMapping("/signinuser")
+	@RequestMapping(value = "/signinuser", method = RequestMethod.POST)
     public String signInUser(@ModelAttribute("AuthForm") AuthForm authForm, Model model) {
         String senha = authForm.getSenha();
         String email = authForm.getEmail();

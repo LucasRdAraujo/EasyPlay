@@ -7,12 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.edu.infnet.easyplay.dao.UserDAO;
 import br.edu.infnet.easyplay.model.AuthForm;
 import br.edu.infnet.easyplay.model.User;
 import br.edu.infnet.easyplay.repository.UserRepository;
-
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class SignUpController {
@@ -33,7 +33,7 @@ public class SignUpController {
         return "signup";
     }
 
-    @PostMapping("/signupuser")
+    @RequestMapping(value = "/signupuser", method = RequestMethod.POST)
     public String signUpUser(@ModelAttribute("AuthForm") AuthForm authForm, Model model) {
         String username = authForm.getUsername();
         String senha = authForm.getSenha();
@@ -47,17 +47,9 @@ public class SignUpController {
 
 
         // TENTATIVA BANCO DE DADOS
-        
-        // userdao.persistUser(new User(Long.toString(i), username, senha, email));
-        /*model.addAttribute("username", username);
-        model.addAttribute("email", email);*/
 
        /* long i = Instant.now().toEpochMilli();
-        User user = new User(Long.toString(((i - Instant.now().toEpochMilli()) << 12)*-1), authForm.getUsername(), authForm.getEmail(), authForm.getSenha());
-        
-        model.addAttribute("id", user.getId());
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());*/
+        userdao.persistUser(Long.toString(((i - Instant.now().toEpochMilli()) << 12)*-1), username, senha, email));*/
         return "home";
     }
 
