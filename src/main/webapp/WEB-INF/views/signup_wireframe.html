@@ -15,10 +15,10 @@
     <title>EasyPlay - SignUp</title>
 </head>
 
-<body>
+<body class="signBackground">
     <!-- d-grid grid-column center-grid -->
     <div class="wrapper">
-        <div style="flex: 1 1 auto;" class="d-flex">
+        <div id="signupWindow" class="d-flex window-border">
             <div class="col-md p-4">
                 <!-- <form:form action="signupuser" method="post" modelAttribute="AuthForm">
                         <h1>Login</h1>
@@ -37,22 +37,23 @@
                         <form:button class="btn btn-primary">Entrar</form:button>
                     </form:form> -->
                 <form action="">
-                    <h1>Login</h1>
-
-                    <div class="form-group mb-2">
-                        <label for="usernameInput">Email</label>
+                    <h2>Login</h2>
+                    <p>Por favor ensira suas informações para entrar!</p>
+                    <div class="form-group mb-3">
+                        <label for="usernameInput">E-MAIL</label>
                         <input type="email" class="form-control">
                     </div>
-                    <div class="form-group mb-2">
-                        <label for="usernameInput">Password</label>
+                    <div class="form-group mb-3">
+                        <label for="usernameInput">SENHA</label>
                         <input type="password" class="form-control">
                     </div>
-                    <button class="btn btn-primary w-100">Entrar</button>
+                    <button class="btn btn-primary w-100 mb-3">Entrar</button>
                 </form>
+                <p>Não possui uma conta? <a href="#">Registre-se</a></p>
             </div>
-            <div class="col-md p-4">
-                <h1>Bem vindo!</h1>
-                <p>Por favor ensira suas informações para entrar!</p>
+            <div id="welcome-message" class="col-md p-4">
+                <h2>Bem vindo!</h2>
+                <p>Convide seus amigos também!</p>
             </div>
         </div>
     </div>

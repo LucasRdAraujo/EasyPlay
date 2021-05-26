@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.edu.infnet.easyplay.dao.UserDAO;
+// import br.edu.infnet.easyplay.dao.UserDAO;
 import br.edu.infnet.easyplay.model.AuthForm;
 import br.edu.infnet.easyplay.model.User;
 import br.edu.infnet.easyplay.repository.UserRepository;

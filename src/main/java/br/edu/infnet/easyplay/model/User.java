@@ -5,29 +5,18 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-@NamedQuery(name = "User.findAll", query = "SELECT t FROM users t")
 public class User {
     @Id
     @Column(name = "id")
     private String id;
-
-    @Column(name = "username")
     private String username;
-    
-    @Column(name = "email")
     private String email;
-    
-    @Column(name = "senha")
     private String senha;
-
-    @Column(name = "celular")
     private String celular;
-
     private List<Server> servers;
 
     public User(String id, String username, String email, String senha) {
