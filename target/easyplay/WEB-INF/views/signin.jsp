@@ -17,29 +17,32 @@
                     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
                     crossorigin="anonymous"></script>
                 <link rel="stylesheet" href="resources/assets/css/styles.css">
-                <title>EasyPlay - SignIn</title>
+                <title>EasyPlay - SignUp</title>
             </head>
 
-            <body>
-                <div class="container-fluid vh-100">
-                    <div class="row d-grid center-grid">
-                        <div class="col-md p-5">
-                            <h1>Bem vindo!</h1>
-                            <p>Por favor ensira suas informações para entrar!</p>
-                        </div>
-                        <div class="col-md p-5">
+            <body class="signBackground">
+                <!-- d-grid grid-column center-grid -->
+                <div class="wrapper">
+                    <div id="signupWindow" class="d-flex window-border">
+                        <div class="col-md p-4">
                             <form:form action="signinuser" method="post" modelAttribute="AuthForm">
                                 <h1>Login</h1>
-                                <div class="form-group mb-2">
-                                    <label for="emailInput">Email</label>
-                                    <form:input id="emailInput" path="email" />
+                                <p>Por favor ensira suas informações para entrar!</p>
+                                <div class="form-group mb-3">
+                                    <label for="emailInput">E-MAIL</label>
+                                    <form:input id="emailInput" class="form-control" path="email" />
                                 </div>
-                                <div class="form-group mb-2">
-                                    <label for="passwordInput">Senha</label>
-                                    <form:input id="passwordInput" path="senha" />
+                                <div class="form-group mb-3">
+                                    <label for="passwordInput">SENHA</label>
+                                    <form:input id="passwordInput" class="form-control" path="senha" />
                                 </div>
-                                <form:button class="btn btn-primary">Entrar</form:button>
+                                <form:button class="btn btn-primary w-100 mb-3">Entrar</form:button>
                             </form:form>
+                            <p>Não possui uma conta? <a href="/easyplay/signup">Cadastre-se</a></p>
+                        </div>
+                        <div id="welcome-message" class="col-md p-4">
+                            <h2>Bem vindo!</h2>
+                            <p>Convide seus amigos também!</p>
                         </div>
                     </div>
                 </div>

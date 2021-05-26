@@ -29,24 +29,20 @@
                                 <h2>Registro</h2>
                                 <p>Por favor ensira suas informações para registrar!</p>
                                 <div class="form-group mb-3">
-                                    <label for="usernameInput">Username</label>
-                                    <form:input id="usernameInput" path="username" />
+                                    <label for="usernameInput">USERNAME</label>
+                                    <form:input id="usernameInput" path="username" class="form-control" />
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="emailInput">Email</label>
-                                    <form:input id="emailInput" path="email" />
+                                    <label for="emailInput">E-MAIL</label>
+                                    <form:input id="emailInput" path="email" class="form-control" />
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="passwordInput">Senha</label>
-                                    <form:input id="passwordInput" path="senha" />
+                                    <label for="passwordInput">SENHA</label>
+                                    <form:input id="passwordInput" path="senha" class="form-control" />
                                 </div>
                                 <form:button class="btn btn-primary w-100 mb-3">Entrar</form:button>
                             </form:form>
-                            <p>Já possui uma conta? <a href="#">Entre por aqui</a></p>
-                        </div>
-                        <div id="welcome-message" class="col-md p-4">
-                            <h2>Bem vindo!</h2>
-                            <p>Convide seus amigos também!</p>
+                            <p>Já possui uma conta? <a href="/easyplay/signin">Entre aqui</a></p>
                         </div>
                     </div>
                 </div>
