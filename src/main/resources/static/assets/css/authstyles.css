@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+:root{
+    --primary-color: #f4f4f4;
+    --dark: #141414;
+    --background-color: #fafafa;
+    --primary-button-color: #ff8585;
+}
+
+body{
+    background-color: var(--primary-color);
+}
+
+h1, h2 {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+}
+
+#header{
+    font-family: 'Quicksand', sans-serif;
+    color: var(--primary-complementar);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.021);
+    /* height: 50vh; */
+    align-self: center;
+}
+
+.list-style-none{
+    list-style: none;
+}
+
+#c-nav-bar{
+    flex-wrap: wrap;
+}
+
+#c-nav-bar li{
+    padding: 10px 15px;    
+}
+#c-nav-bar li a{
+    padding: 10px;
+    color: var(--primary-complementar);
+    text-decoration: none;
+    transition: all 0.5s;
+}
+#c-nav-bar li a:hover{
+    color: var(--secondary-color);
+    padding: 10px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+/* #d{
+    background-image: url(../images/header-vector.png);
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: bottom;
+} */
+
+.body-column{
+    background-color: var(--secondary-color);
+    border-radius: 1px;
+    color: var(--primary-color);
+    /* clip-path: circle(75.3% at 23% 18%); */
+}
+
+#footer{
+    border-radius: 1px;
+    background-color: var(--secondary-color);
+}
+
+.ball-column {
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ball {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 50%; */
+    clip-path: circle(45%);
+    box-shadow: 0px 0px 5px #00000021;
+    font-size: xxx-large;
+    color: var(--secondary-color);
+}
+
+.ball.ball-white {
+    background-color: var(--primary-color);
+}
+
+.text-right{
+    text-align: end;
+}
+
+.c-btn{
+    padding: 10px 50px;
+    border-style: none;
+    border-radius: 35px;
+    filter: brightness(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.c-btn-ball{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 20px;
+    padding: 10px 15px;
+    border-style: none;
+    border-radius: 50%;
+    filter: brightness(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.c-btn:hover{
+    box-shadow: 4px 4px 5px #00000018;
+    filter: brightness(1.09);
+}
+
+.c-btn-ball:hover{
+    box-shadow: 4px 4px 5px #00000018;
+    filter: brightness(1.09);
+}
+
+.vh-100{
+    height: 100vh;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.grid-column{
+    grid-auto-flow: column;
+}
+
+.center-grid{
+    justify-content: center;
+    align-content: center;
+}
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signBackground {
+    background-image: url(../svg/sigin-bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#signupWindow {
+    background-color: var(--primary-color);
+}
+
+#signupWindow label {
+    font-size: small;
+    color: gray;
+}
+
+#signupWindow input {
+    padding: 7px 5px;
+}
+
+#signupWindow a {
+    color: var(--secondary-color);
+}
+
+.window-border{
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.253);
+}
+
+.form-control:focus {
+    border-color: var(--secondary-color);
+    /* box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); */
+}
+
+.c-btn {
+    font-family: 'Archivo Black', sans-serif;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 25px;
+    color: var(--background-color);
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.c-btn-primary {
+    background-color: var(--primary-button-color);
+}
+
+.c-btn-primary:hover {
+    background-color: #ff9e9e;
+    color: var(--background-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.062);
+}
+
+@media (min-width: 486px){
+    .wrapper {
+        min-height: 580px;
+    }
+}
+/* 
+*/
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    #welcome-message {
+        display: none;
+    }
+}
