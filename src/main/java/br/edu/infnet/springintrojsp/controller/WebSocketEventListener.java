@@ -22,13 +22,13 @@ public class WebSocketEventListener {
 
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectEvent event) {
-        logger.info("Alguém conectou");
+        logger.info("Alguém conectou.");
     }
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         // StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-        logger.info("Um disord desonecto");
+        logger.info("Alguém desconectou.");
 
         // String username = (String) headerAccessor.getSessionAttributes().get("username");
         // if(username != null) {

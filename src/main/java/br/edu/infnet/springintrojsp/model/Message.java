@@ -10,16 +10,17 @@ public class Message {
 
     @Id
     private String id;
-    private String ch_id;
-    private String content;
+    private String senderid;
     private String sender;
+    private String content;
 
     public Message() {
     }
 
-    // public Message(String id, String content) {
-    //     super();
+    // public Message(String id, String senderid, String sender, String content) {
     //     this.id = id;
+    //     this.senderid = senderid;
+    //     this.sender = sender;
     //     this.content = content;
     // }
 
@@ -30,13 +31,13 @@ public class Message {
     public void setId(String id) {
         this.id = id;
     }
-    
-    public String getCh_id() {
-        return ch_id;
+
+    public String getSenderid() {
+        return senderid;
     }
 
-    public void setCh_id(String ch_id) {
-        this.ch_id = ch_id;
+    public void setSenderid(String senderid) {
+        this.senderid = senderid;
     }
 
     public String getContent() {

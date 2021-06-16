@@ -34,16 +34,26 @@
             <c:if test="${not empty server}">
                 <c:if test="${not empty channel}">
                     <script id="generate-LStorage" type="text/javascript">
-                        localStorage.setItem('user','{ "id": "${user.id}", "name": "${user.username}" }');
-                        localStorage.setItem('currentChannel', '${channel.id}');
+                        localStorage.setItem('userLoggedIn', '{ "id": "${user.id}", "currentAction": { "channel": "${channel.id}" } }');
                         document.querySelector("#generate-LStorage").remove();
                     </script>
-                    
+
                     <div class="body-wrapper">
                         <div id="elem-1" class="body-content-scroller scroller-base overflow-a-none">
                             <div class="scroller-content-2 p-relative">
                                 <!-- MENSAGENS APARECEM DENTRO DO DIV A BAIXO!! -->
-                                <div id="chat-messages" class="body-scroller-inner"></div>
+                                <div id="chat-messages" class="body-scroller-inner">
+                                    <c:forEach items="${channel.messages}" var="message">
+                                        <div class="message min-h-message group-start message-wapper-p-left message-wrapper">
+                                        <div class="message-content">
+                                            <img src="${contextPath}/assets/imgs/photo.png"
+                                                class="avatar" alt="">
+                                            <h2 class="message-header">${message.sender}</h2>
+                                            <div class="markup message-content">${message.content}</div>
+                                        </div>
+                                    </div>
+                                    </c:forEach>
+                                </div>
                                 <div class="scroller-divider"></div>
                             </div>
                         </div>
@@ -52,7 +62,7 @@
                     <form id="messageForm" name="messageForm" nameForm="messageForm">
                         <div class="form">
                             <div class="text-input-area channel-text-area d-flex align-items-center">
-                                <input name="" id="message-input" type="text" autocomplete="off" cols="30" rows="10" />
+                                <input name="" id="message-input" type="text" autocomplete="off" placeholder="Digite uma mensagem" />
                             </div>
                         </div>
                     </form>

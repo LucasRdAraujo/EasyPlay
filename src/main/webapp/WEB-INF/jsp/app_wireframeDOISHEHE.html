@@ -11,6 +11,25 @@
 </head>
 
 <body>
+    <div style="display: flex;" id="serverCreateOverlay" class="app-create-server-overlay">
+        <div class="create-server-form-column">
+            <form action="/api/v1/guilds" method="POST" modelAttribute="serverDto">
+                <div class="mb-16">
+                    <h1 style="margin-bottom: 8px;">Criar servidor</h1>
+                    <p>Crie um servidor e convide seus amigos para participar.</p>
+                </div>
+                <div class="mb-16">
+                    <input id="inp_name" class="w-100" type="text" path="name" placeholder="Server name" />
+                </div>
+                <div>
+                    <button type="submit" class="btn">Criar servidor</button>
+                    <button>Fechar</button>
+                </div>
+            </form:form>
+            
+        </div>
+    </div>
+
     <div class="app-m">
         <div class="app-1">
             <div class="app-2">
@@ -19,6 +38,17 @@
                     <div class="layer-3 base-layer">
                         <div class="container-1">
                             <div class="base">
+                                <nav class="app-nav app-nav-container">
+                                    <div class="p-relative">
+                                        <div class="app-nav-list-item">
+                                            <div class="home-button">
+                                                <a href="${contextPath}/channels/app">
+                                                    <div class="app-nav-wrapper"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
                                 <div class="content">
                                     <div class="sidebar">
                                         <nav class="sidebar-container">
@@ -33,13 +63,45 @@
                                                     <h1 class="header-name">Nome do server</h1>
                                                 </header>
                                             </div>
-                                            <div class="scroller scroller-thin scroller-base">
-                                                <div class="scroller-content">
+                                            <div style="direction: rtl;" class="scroller scroller-thin scroller-base">
+                                                <div style="direction: ltr;" class="scroller-content">
                                                     <div style="height: 0px;"></div>
                                                     <div class="default-container">
                                                         <div class="category-wrapper clickable">
+                                                            <i class="fas fa-chevron-down icon"></i>
                                                             <div class="category-content">
-                                                                <i class="fas fa-chevron-down icon"></i>
+                                                                <h2 class="name-container">
+                                                                    Nome categoria
+                                                                </h2>
+                                                            </div>
+                                                            <button class="btn"><i class="fas fa-plus"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="default-container">
+                                                        <div class="list-item selected">
+                                                            <div class="list-item-content">
+                                                                <a href="#" class="main-content">Canal aqui</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="default-container">
+                                                        <div class="list-item">
+                                                            <div class="list-item-content">
+                                                                <a href="#" class="main-content">Canal aqui</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="default-container selected">
+                                                        <div class="list-item">
+                                                            <div class="list-item-content">
+                                                                <a href="#" class="main-content">Canal aqui</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="default-container">
+                                                        <div class="category-wrapper clickable">
+                                                            <i class="fas fa-chevron-down icon"></i>
+                                                            <div class="category-content">
                                                                 <h2 class="name-container">
                                                                     Nome categoria
                                                                 </h2>
@@ -70,8 +132,8 @@
                                                     </div>
                                                     <div class="default-container">
                                                         <div class="category-wrapper clickable">
+                                                            <i class="fas fa-chevron-down icon"></i>
                                                             <div class="category-content">
-                                                                <i class="fas fa-chevron-down icon"></i>
                                                                 <h2 class="name-container">
                                                                     Nome categoria
                                                                 </h2>
@@ -102,40 +164,8 @@
                                                     </div>
                                                     <div class="default-container">
                                                         <div class="category-wrapper clickable">
+                                                            <i class="fas fa-chevron-down icon"></i>
                                                             <div class="category-content">
-                                                                <i class="fas fa-chevron-down icon"></i>
-                                                                <h2 class="name-container">
-                                                                    Nome categoria
-                                                                </h2>
-                                                            </div>
-                                                            <button class="btn"><i class="fas fa-plus"></i></button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="default-container selected">
-                                                        <div class="list-item">
-                                                            <div class="list-item-content">
-                                                                <a href="#" class="main-content">Canal aqui</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="default-container">
-                                                        <div class="list-item">
-                                                            <div class="list-item-content">
-                                                                <a href="#" class="main-content">Canal aqui</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="default-container selected">
-                                                        <div class="list-item">
-                                                            <div class="list-item-content">
-                                                                <a href="#" class="main-content">Canal aqui</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="default-container">
-                                                        <div class="category-wrapper clickable">
-                                                            <div class="category-content">
-                                                                <i class="fas fa-chevron-down icon"></i>
                                                                 <h2 class="name-container">
                                                                     Nome categoria
                                                                 </h2>
@@ -206,7 +236,7 @@
                                                 <form action="" class="form">
                                                     <div
                                                         class="text-input-area channel-text-area d-flex align-items-center">
-                                                        <input name="" id="message-input" cols="30" rows="10" />
+                                                        <input name="" id="message-input" autocomplete="off" placeholder="Digite uma mensagem" />
                                                         <!-- <a href="#"><i class="fas fa-paper-plane"></i></div> -->
                                                     </div>
                                                 </form>

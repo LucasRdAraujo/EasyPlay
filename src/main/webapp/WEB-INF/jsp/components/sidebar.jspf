@@ -1,19 +1,24 @@
 <div class="sidebar">
     <nav class="sidebar-container">
         <c:if test="${not empty server}">
+            <div style="
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            " class="server-img"></div>
             <div class="container-title clickable">
                 <header class="header-title">
                     <h1 class="header-name">${server.name}</h1>
                 </header>
             </div>
-            <div class="scroller scroller-thin scroller-base">
-                <div class="scroller-content">
+            <div style="direction: rtl;" class="scroller scroller-thin scroller-base">
+                <div style="direction: ltr;" class="scroller-content">
                     <div style="height: 0px;"></div>
                     <c:forEach items="${server.categories}" var="c">
                         <div class="default-container">
                             <div class="category-wrapper clickable">
+                                <i class="fas fa-chevron-down icon"></i>
                                 <div class="category-content">
-                                    <i class="fas fa-chevron-down icon"></i>
                                     <h2 class="name-container">
                                         ${c.name}
                                     </h2>
@@ -22,7 +27,7 @@
                             </div>
                         </div>
                         <c:forEach items="${c.textchannels}" var="tc">
-                            <div class="default-container selected">
+                            <div class="default-container">
                                 <div class="list-item">
                                     <div class="list-item-content">
                                         <a href="/channels/${server.id}/${tc.id}" class="main-content">${tc.name}</a>

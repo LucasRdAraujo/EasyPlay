@@ -38,7 +38,7 @@ public class TextChannel {
     public void setId(String id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -47,13 +47,12 @@ public class TextChannel {
         this.name = name;
     }
 
-    // public Collection<Message> getMessages() {
-    //     return messages;
-    // }
+    public Collection<Message> getMessages() {
+        return messages;
+    }
 
-    // public void setMessages(Collection<Message> messages) {
-    //     this.messages = messages;
-    // }
+    public void setMessages(Collection<Message> messages) {
+        this.messages = messages;
+    }
 
-    
 }
