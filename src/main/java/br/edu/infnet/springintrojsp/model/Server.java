@@ -18,16 +18,16 @@ public class Server {
 
     @Id
     private String id;
-    
+
     private String name;
 
     private String ownerId;
 
     private String serverBanner;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sv_id", referencedColumnName = "id")
-    private Collection<Code> inviteCodes = new ArrayList<>();
+    // @OneToMany(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "sv_id", referencedColumnName = "id")
+    // private Collection<Code> inviteCodes = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "servers")
     private Collection<User> members = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Server {
     @JoinColumn(name = "sv_id", referencedColumnName = "id")
     private Collection<Category> categories = new ArrayList<>();
 
-    public Server(){
+    public Server() {
     }
 
     public Server(String id, String name) {
@@ -59,7 +59,7 @@ public class Server {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getOwnerId() {
         return ownerId;
     }
@@ -71,17 +71,26 @@ public class Server {
     public Collection<User> getMembers() {
         return members;
     }
-    
+
     public void setMembers(Collection<User> members) {
         this.members = members;
     }
 
-    public Collection<Code> getInviteCodes() {
-        return inviteCodes;
-    }
+    // public Collection<Code> getInviteCodes() {
+    // return inviteCodes;
+    // }
 
-    public void setInviteCodes(Collection<Code> inviteCodes) {
-        this.inviteCodes = inviteCodes;
+    // public void setInviteCodes(Collection<Code> inviteCodes) {
+    // this.inviteCodes = inviteCodes;
+    // }
+
+    public TextChannel getTextChannelById(String id) {
+        for (Category category : categories) {
+            TextChannel txtchannel = category.getTextChannelById(id);
+            if(txtchannel != null)
+                return txtchannel;
+        }
+        return null;
     }
 
     public Collection<Category> getCategories() {
@@ -99,6 +108,5 @@ public class Server {
     public void setServerBanner(String serverBanner) {
         this.serverBanner = serverBanner;
     }
-    
-    
+
 }

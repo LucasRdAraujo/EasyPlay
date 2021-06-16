@@ -53,6 +53,10 @@ public class Category {
         return textchannels;
     }
 
+    public TextChannel getTextChannelById(String id) {
+        return textchannels.stream().filter(tc -> tc.getId().equals(id)).findAny().orElse(null);
+    }
+
     public void setTextchannels(Collection<TextChannel> textchannels) {
         this.textchannels = textchannels;
     }

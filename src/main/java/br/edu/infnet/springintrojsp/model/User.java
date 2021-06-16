@@ -31,9 +31,9 @@ public class User {
     private Collection<Server> servers = new ArrayList<>();
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "requester_receiver", joinColumns = @JoinColumn(name = "requester_id"), inverseJoinColumns = @JoinColumn(name = "receiver_id"))
-    private Collection<User> friends = new ArrayList<>();
+    // @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    // @JoinTable(name = "requester_receiver", joinColumns = @JoinColumn(name = "requester_id"), inverseJoinColumns = @JoinColumn(name = "receiver_id"))
+    // private Collection<User> friends = new ArrayList<>();
     
     // @OneToMany(mappedBy = "requester")
     // private Collection<Friendship> requests = new ArrayList<>();
@@ -101,6 +101,10 @@ public class User {
 
     public Collection<Server> getServers() {
         return servers;
+    }
+
+    public Server getServerById(String id) {
+        return servers.stream().filter(s -> s.getId().equals(id)).findAny().orElse(null);
     }
 
     public void setServers(Set<Server> servers) {

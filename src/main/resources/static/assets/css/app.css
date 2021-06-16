@@ -27,6 +27,32 @@ body {
     background: transparent;
 }
 
+.app-create-server-overlay {
+    position: absolute;
+    background-color: #00000069;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: none;
+    flex: 1 1 auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.create-server-form-column {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-server-form {
+    background-color: var(--app-color);
+    padding: 16px;
+}
+
 /* Criar server */
 .app-add-server {
     position: absolute;

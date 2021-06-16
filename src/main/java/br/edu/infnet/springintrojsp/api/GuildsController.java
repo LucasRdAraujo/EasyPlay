@@ -69,7 +69,6 @@ public class GuildsController {
 
     @DeleteMapping("/{guildid}")
     public String removeGuild(@PathVariable String guildid, Model model) {
-        // Get Logged In User (Always...)
         return "app";
     }
 }

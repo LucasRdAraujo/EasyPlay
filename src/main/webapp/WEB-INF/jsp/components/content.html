@@ -1,3 +1,5 @@
+
+
 <div class="app-body">
     <div class="app-body-content">
         <main class="app-body">
@@ -33,22 +35,17 @@
             </c:if>
             <c:if test="${not empty server}">
                 <c:if test="${not empty channel}">
-                    <script id="generate-LStorage" type="text/javascript">
-                        localStorage.setItem('user','{ "id": "${user.id}", "name": "${user.username}" }');
-                        localStorage.setItem('currentChannel', '${channel.id}');
-                        document.querySelector("#generate-LStorage").remove();
-                    </script>
-                    
                     <div class="body-wrapper">
                         <div id="elem-1" class="body-content-scroller scroller-base overflow-a-none">
                             <div class="scroller-content-2 p-relative">
-                                <!-- MENSAGENS APARECEM DENTRO DO DIV A BAIXO!! -->
-                                <div id="chat-messages" class="body-scroller-inner"></div>
-                                <div class="scroller-divider"></div>
+                                <div class="body-scroller-inner">
+                                    <!-- MENSAGENS APARECEM AQUI!! -->
+                                    <div class="scroller-divider">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <form action="/api/v1/channels/${channel.id}/message"> -->
                     <form id="messageForm" name="messageForm" nameForm="messageForm">
                         <div class="form">
                             <div class="text-input-area channel-text-area d-flex align-items-center">

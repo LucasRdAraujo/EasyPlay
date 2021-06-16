@@ -31,6 +31,7 @@
                                         possa acompanhar as competições de seu pro-player favorito.</p>
                                     <a href="${contextPath}/signin" class="c-btn c-btn-primary">Começar</a>
                                 </div>
+                                <img class="header-img" src="${contextPath}/assets/svg/header-img.svg" alt="">
                             </div>
                         </header>
                     </div>

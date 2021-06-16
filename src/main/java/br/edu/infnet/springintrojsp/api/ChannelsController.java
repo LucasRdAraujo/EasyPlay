@@ -1,6 +1,9 @@
 package br.edu.infnet.springintrojsp.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.infnet.springintrojsp.model.Code;
+import br.edu.infnet.springintrojsp.model.Message;
 import br.edu.infnet.springintrojsp.model.Server;
 import br.edu.infnet.springintrojsp.service.ServerService;
 import br.edu.infnet.springintrojsp.util.IdGenerator;
@@ -29,4 +33,24 @@ public class ChannelsController {
         // }
         return "app";
     }
+
+    // @MessageMapping("/message")
+    // @SendTo("/topic/public")
+    // @PostMapping("/{channelid}/messages")
+    // public Message sendMessage(@PathVariable String channelid, @Payload Message message) {
+    //     return message;
+
+    //     // @MessageMapping("/message")
+    //     // @SendTo("/topic/public")
+    //     // public Message sendMessage(@Payload Message message) {
+    //     //     return message;
+    //     // }
+
+    //     // Server server = serverService.getServerById(serverid);
+    //     // if(server != null) {
+    //     //     Code code = new Code(IdGenerator.genId(), IdGenerator.genId());
+    //     //     server.getInviteCodes().add(code);
+    //     // }
+    //     // return "app";
+    // }
 }
