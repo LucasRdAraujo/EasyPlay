@@ -15,15 +15,21 @@
         <div class="create-server-form-column">
             <form action="/api/v1/guilds" method="POST" modelAttribute="serverDto">
                 <div class="mb-16">
-                    <h1 style="margin-bottom: 8px;">Criar servidor</h1>
+                    <div class="header mb-16">
+                        <div class="header-text">
+                            <h1>Criar servidor</h1>
+                        </div>
+                        <div>
+                            <a href="#" class="close-create-server-btn"><i class="fas fa-times"></i></a>
+                        </div>
+                    </div>
                     <p>Crie um servidor e convide seus amigos para participar.</p>
                 </div>
                 <div class="mb-16">
-                    <input id="inp_name" class="w-100" type="text" path="name" placeholder="Server name" />
+                    <input id="inp_name" class="w-100" type="text" path="name" placeholder="Nome do servidor" />
                 </div>
                 <div>
-                    <button type="submit" class="btn">Criar servidor</button>
-                    <button>Fechar</button>
+                    <button type="submit" class="btn btn-primary">Criar servidor</button>
                 </div>
             </form:form>
             

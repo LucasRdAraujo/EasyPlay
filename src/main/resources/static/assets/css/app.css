@@ -33,6 +33,10 @@ body {
     background: transparent;
 }
 
+a {
+    text-decoration: none;
+}
+
 .app-create-server-overlay {
     position: absolute;
     background-color: #00000069;
@@ -55,6 +59,27 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+.create-server-form-column .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+}
+
+.create-server-form-column .header .header-text {
+    flex: 1 1 auto;
+}
+
+.create-server-form-column form{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: var(--app-color);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.212);
 }
 
 .create-server-form-column h1 {
@@ -83,14 +108,24 @@ body {
     color: var(--message-color);
 }
 
-.create-server-form-column form{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    border-radius: 8px;
-    background-color: var(--app-color);
+.create-server-form-column .close-create-server-btn {
+    background-color: var(--app-header-color);
+    padding: 8px;
+    color: var(--message-color);
+    clip-path: circle();
+    cursor: pointer;
+}
+
+.create-server-form-column .btn {
+    border: none;
+    border-radius: 16px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.create-server-form-column .btn.btn-primary {
+    background-color: var(--app-header-color);
+    color: var(--message-color);
 }
 
 /* Criar server */
@@ -1078,7 +1113,6 @@ body {
 .server-card-wrapper a {
     font-family: 'Poppins', sans-serif;
     color: var(--message-color);
-    text-decoration: none;
 }
 
 .server-card-wrapper .card {

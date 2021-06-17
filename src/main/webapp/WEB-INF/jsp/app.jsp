@@ -22,13 +22,30 @@
                     <div id="serverCreateOverlay" class="app-create-server-overlay">
                         <div class="create-server-form-column">
                             <form:form action="/api/v1/guilds" method="POST" modelAttribute="serverDto">
+                                <div class="mb-16">
+                                    <div class="header mb-16">
+                                        <div class="header-text">
+                                            <h1>Criar servidor</h1>
+                                        </div>
+                                        <div>
+                                            <a onclick="createServer()" class="close-create-server-btn"><i
+                                                    class="fas fa-times"></i></a>
+                                        </div>
+                                    </div>
+                                    <p>Crie um servidor e convide seus amigos para participar.</p>
+                                </div>
                                 <spring:bind path="name">
-                                    <form:input id="inp_name" type="text" path="name" placeholder="Server name" />
-                                    <form:errors path="name"></form:errors>
+                                    <div class="mb-16">
+                                        <form:input id="inp_name" class="w-100" type="text" path="name"
+                                            placeholder="Nome do servidor" />
+                                        <form:errors path="name"></form:errors>
+                                    </div>
                                 </spring:bind>
-                                <form:button type="submit">Criar servidor</form:button>
+                                <div>
+                                    <form:button type="submit" class="btn btn-primary">Criar servidor</form:button>
+                                </div>
                             </form:form>
-                            <button onclick="createServer()">Fechar</button>
+
                         </div>
                     </div>
 
