@@ -1,8 +1,8 @@
-package br.edu.infnet.springintrojsp.service;
+// package br.edu.infnet.springintrojsp.service;
 
-import br.edu.infnet.springintrojsp.model.TextChannel;
+// import br.edu.infnet.springintrojsp.model.TextChannel;
 
-public interface TextChannelService {
-    TextChannel store(TextChannel textChannel);
-    TextChannel getTextChannelById(String id);
-}
+// public interface TextChannelService {
+//     TextChannel store(TextChannel textChannel);
+//     TextChannel getTextChannelById(String id);
+// }

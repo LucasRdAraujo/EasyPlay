@@ -1,8 +1,9 @@
 package br.edu.infnet.springintrojsp.service;
 
+import java.util.Optional;
+
 import br.edu.infnet.springintrojsp.model.Server;
 
 public interface ServerService {
-    Server getServerById(String id);
-    Server getServerByUsername(String name);
+    Optional<Server> getServerById(String id);
 }

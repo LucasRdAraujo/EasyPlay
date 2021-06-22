@@ -10,15 +10,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "tbl_textchannels")
 public class TextChannel {
 
+    @JsonProperty("id")
     @Id
     private String id;
 
+    @JsonProperty("name")
     private String name;
 
+    @JsonProperty("messages")
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "ch_id", referencedColumnName = "id")
     private Collection<Message> messages = new ArrayList<>();

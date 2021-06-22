@@ -8,6 +8,5 @@ import br.edu.infnet.springintrojsp.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
     User getUserById(String id);
-    User getUserByUsername(String username);
     User getUserByEmail(String email);
 }

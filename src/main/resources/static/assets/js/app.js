@@ -28,8 +28,8 @@ function connect() {
 function sendMessage(event) {
     let mt = messageInput.value.trim();
     if (mt) {
+        console.log(userLoggedIn.id);
         stomp.send(`/channels/${userLoggedIn.currentAction.channel}/message`, {}, JSON.stringify({
-            id: new Date().getTime(),
             senderid: userLoggedIn.id,
             content: messageInput.value
         }));

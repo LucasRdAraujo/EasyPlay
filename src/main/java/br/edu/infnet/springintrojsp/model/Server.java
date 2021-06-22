@@ -12,26 +12,32 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "tbl_servers")
 public class Server {
+    @JsonIgnoreProperties(ignoreUnknown = true)
 
+    @JsonProperty("id")
     @Id
     private String id;
 
+    @JsonProperty("name")
     private String name;
 
+    @JsonProperty("ownerId")
     private String ownerId;
 
+    @JsonProperty("serverBanner")
     private String serverBanner;
 
-    // @OneToMany(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "sv_id", referencedColumnName = "id")
-    // private Collection<Code> inviteCodes = new ArrayList<>();
-
+    @JsonProperty("members")
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "servers")
     private Collection<User> members = new ArrayList<>();
 
+    @JsonProperty("categories")
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "sv_id", referencedColumnName = "id")
     private Collection<Category> categories = new ArrayList<>();
@@ -76,18 +82,14 @@ public class Server {
         this.members = members;
     }
 
-    // public Collection<Code> getInviteCodes() {
-    // return inviteCodes;
-    // }
-
-    // public void setInviteCodes(Collection<Code> inviteCodes) {
-    // this.inviteCodes = inviteCodes;
-    // }
+    public Boolean memberExists(String id) {
+        return members.stream().anyMatch(m -> m.getId().equals(id));
+    }
 
     public TextChannel getTextChannelById(String id) {
         for (Category category : categories) {
             TextChannel txtchannel = category.getTextChannelById(id);
-            if(txtchannel != null)
+            if (txtchannel != null)
                 return txtchannel;
         }
         return null;

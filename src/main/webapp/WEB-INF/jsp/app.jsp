@@ -21,7 +21,7 @@
                 <body>
                     <div id="serverCreateOverlay" class="app-create-server-overlay">
                         <div class="create-server-form-column">
-                            <form:form action="/api/v1/guilds" method="POST" modelAttribute="serverDto">
+                            <form:form action="/channels/guilds" method="POST" modelAttribute="serverDto">
                                 <div class="mb-16">
                                     <div class="header mb-16">
                                         <div class="header-text">

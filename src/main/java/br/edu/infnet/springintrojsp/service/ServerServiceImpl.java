@@ -1,5 +1,7 @@
 package br.edu.infnet.springintrojsp.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +15,8 @@ public class ServerServiceImpl implements ServerService {
     private ServerRepository serverRepository;
 
     @Override
-    public Server getServerById(String id) {
-        return serverRepository.getServerById(id);
-    }
-
-    @Override
-    public Server getServerByUsername(String name) {
-        return serverRepository.getServerByName(name);
+    public Optional<Server> getServerById(String id) {
+        return serverRepository.findById(id);
     }
 
 }

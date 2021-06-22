@@ -4,25 +4,34 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "tbl_messages")
 public class Message {
 
+    @JsonProperty("id")
     @Id
     private String id;
+
+    @JsonProperty("senderid")
     private String senderid;
+
+    @JsonProperty("sender")
     private String sender;
+
+    @JsonProperty("content")
     private String content;
 
     public Message() {
     }
 
-    // public Message(String id, String senderid, String sender, String content) {
-    //     this.id = id;
-    //     this.senderid = senderid;
-    //     this.sender = sender;
-    //     this.content = content;
-    // }
+    public Message(String id, String senderid, String sender, String content) {
+        this.id = id;
+        this.senderid = senderid;
+        this.sender = sender;
+        this.content = content;
+    }
 
     public String getId() {
         return id;
@@ -56,5 +65,4 @@ public class Message {
         this.sender = sender;
     }
 
-    
 }
