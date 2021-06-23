@@ -7,5 +7,4 @@ import br.edu.infnet.easyplayapi.model.Server;
 
 @Repository
 public interface ServerRepository extends JpaRepository<Server, String> {
-    Server getServerById(String id);
 }

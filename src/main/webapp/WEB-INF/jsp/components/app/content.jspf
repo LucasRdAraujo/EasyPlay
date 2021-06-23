@@ -1,0 +1,30 @@
+<!-- Conteudo do app -->
+
+<div class="body-wrapper">
+    <div id="elem-1" class="body-content-scroller scroller-base overflow-a-none">
+        <div class="scroller-content-2 p-relative">
+            <div class="body-scroller-inner">
+                <div class="servers-container">
+                    <div class="servers-container-inner">
+                        <div class="server-card-wrapper">
+                            <c:forEach items="${servers}" var="sv">
+                                <a href="${contextPath}/channels/${sv.id}">
+                                    <div class="card">
+                                        <div class="card-server-banner">
+                                        </div>
+                                        <div class="card-text">${sv.name}</div>
+                                    </div>
+                                </a>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+                <div class="create-server-container">
+                    <button onclick="createServer()" class="btn create-server"><i
+                            class="fas fa-plus"></i></button>
+                </div>
+                <div class="scroller-divider"></div>
+            </div>
+        </div>
+    </div>
+</div>

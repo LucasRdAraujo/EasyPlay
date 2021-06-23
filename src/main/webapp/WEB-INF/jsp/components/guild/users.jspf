@@ -1,0 +1,23 @@
+<!-- lista de membros do server -->
+
+<h2 class="user-list-text name-container">
+    <span>Membros</span>
+</h2>
+
+<c:forEach items="${server.members}" var="member">
+    <div class="user user-container">
+        <div class="user-content">
+            <div class="userList-avatar">
+                <div style="
+                            background-image: url(${contextPath}/assets/imgs/photo.png); background-size: cover; background-position: center; background-repeat: no-repeat;"
+                    class="userList-avatar-wrapper">
+                </div>
+            </div>
+            <div class="user-name-content">
+                <div class="user-name">
+                    <span class="name">${member.username}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</c:forEach>

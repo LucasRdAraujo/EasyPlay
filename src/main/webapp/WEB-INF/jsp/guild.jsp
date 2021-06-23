@@ -15,11 +15,11 @@
                     <script src="https://kit.fontawesome.com/6697f5eca6.js" crossorigin="anonymous"></script>
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                     <link rel="stylesheet" href="${contextPath}/assets/css/app.css">
-                    <title>EasyPlay App</title>
+                    <title>EasyPlay - Nome server</title>
                 </head>
 
                 <body>
-                    <%@ include file="components/app/createServerPopup.jspf" %>
+                    <%@ include file="components/guild/createChannelPopup.jspf" %>
 
                     <div class="app-m">
                         <div class="app-1">
@@ -41,21 +41,21 @@
                                                     </div>
                                                 </nav>
 
-                                                <!-- Sidebars aqui -->
+                                                <!-- Sidebar aqui -->
                                                 <div class="content">
-                                                    <%@ include file="components/app/sidebar.jspf" %>
+                                                    <%@ include file="components/guild/sidebar.jspf" %>
+
                                                         <!-- Conteudo app aqui -->
                                                         <div class="app-body">
                                                             <div class="app-body-content">
                                                                 <main class="app-body">
-                                                                    <%@ include file="components/app/content.jspf" %>
+                                                                    <%@ include file="components/guild/content.jspf" %>
                                                                 </main>
                                                                 <div class="users-wrap">
                                                                     <div id="users-overflow" class="users">
                                                                         <div class="scroller-content">
                                                                             <%@ include
-                                                                                file="components/app/users.jspf"
-                                                                                %>
+                                                                                file="components/guild/users.jspf" %>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -69,7 +69,9 @@
                             </div>
                         </div>
                     </div>
-                    <script src="${contextPath}/assets/js/app.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+                    <script src="${contextPath}/assets/js/guild.js"></script>
                 </body>
 
                 </html>

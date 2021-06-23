@@ -1,0 +1,28 @@
+<div id="channelCreateOverlay" class="app-create-server-overlay">
+    <div class="create-server-form-column">
+        <form:form action="/channels/guilds" method="POST" modelAttribute="serverDto">
+            <div class="mb-16">
+                <div class="header mb-16">
+                    <div class="header-text">
+                        <h1>Criar canal</h1>
+                    </div>
+                    <div>
+                        <a onclick="createChannel()" class="close-create-server-btn"><i
+                                class="fas fa-times"></i></a>
+                    </div>
+                </div>
+            </div>
+            <spring:bind path="name">
+                <div class="mb-16">
+                    <form:input id="inp_name" class="w-100" type="text" path="name"
+                        placeholder="novo canal de texto" />
+                    <form:errors path="name"></form:errors>
+                </div>
+            </spring:bind>
+            <div>
+                <form:button type="submit" class="btn btn-primary">Criar canal</form:button>
+            </div>
+        </form:form>
+
+    </div>
+</div>

@@ -7,6 +7,4 @@ import br.edu.infnet.easyplayapi.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
-    User getUserById(String id);
-    User getUserByEmail(String email);
 }

@@ -27,8 +27,9 @@
                                 </nav>
                                 <div class="header-title-column text-light text-position">
                                     <h1 class="f-archivo">Imagine só...</h1>
-                                    <p>Um lugar onde você possa se reunir ou conhecer novos amigos. Onde você
-                                        possa acompanhar as competições de seu pro-player favorito.</p>
+                                    <p>Um lugar onde você possa se reunir e conhecer novos amigos, que você
+                                        possa acompanhar as competições de seu pro-player favorito ou quem sabe ser um
+                                        profissional?.</p>
                                     <a href="${contextPath}/signin" class="c-btn c-btn-primary">Começar</a>
                                 </div>
                                 <img class="header-img" src="${contextPath}/assets/svg/header-img.svg" alt="">
@@ -38,7 +39,7 @@
                     <div class="container-fluid">
                         <section class="row p-5 content-spacing">
                             <div class="col-md p-4 text-center">
-                                <img style="width: 70%;" src="${contextPath}/assets/svg/trophy.svg" alt="">
+                                <img style="width: 50%;" src="${contextPath}/assets/svg/insignia.svg" alt="">
                             </div>
                             <div class="col-md-5 p-4 align-self-center text-dark">
                                 <h2 class="f-archivo">Reuna-se com seus amigos</h2>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,6 +23,11 @@ public class TextChannel {
 
     @JsonProperty("name")
     private String name;
+
+    @JsonProperty("parentId")
+
+    @Column(name = "parentId", insertable = false, updatable = false)
+    private String parentId;
 
     @JsonProperty("messages")
     @OneToMany(cascade = CascadeType.ALL)

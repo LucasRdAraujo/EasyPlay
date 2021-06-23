@@ -20,6 +20,11 @@ public class ServerServiceImp implements ServerService {
     }
 
     @Override
+    public void deleteById(String id) {
+        serverRepository.deleteById(id);
+    }
+
+    @Override
     public Iterable<Server> getAll() {
         return serverRepository.findAll();
     }

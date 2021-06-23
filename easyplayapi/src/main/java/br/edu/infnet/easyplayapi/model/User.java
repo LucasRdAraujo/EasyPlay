@@ -26,7 +26,7 @@ public class User {
     private String profilePicture;
 
     @JsonBackReference
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Server> servers = new ArrayList<>();
 
     public User() {

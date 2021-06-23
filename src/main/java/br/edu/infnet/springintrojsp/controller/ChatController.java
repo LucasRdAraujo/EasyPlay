@@ -10,14 +10,14 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import br.edu.infnet.springintrojsp.model.Message;
-import br.edu.infnet.springintrojsp.service.IServerService;
+import br.edu.infnet.springintrojsp.service.IApiService;
 
 @Controller
 @Transactional
 public class ChatController {
 
     @Autowired
-    private IServerService iServerService;
+    private IApiService iServerService;
 
     @MessageMapping("/channels/{channelid}/message")
     @SendTo("/topic/channels/{channelid}/message")

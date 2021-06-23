@@ -1,0 +1,7 @@
+<!-- Sidebar da direita na home do app -->
+
+<div class="sidebar">
+    <nav class="sidebar-container"></nav>
+    <!-- Painel de usuário -->
+    <%@ include file="../userpanel.jspf" %>
+</div>

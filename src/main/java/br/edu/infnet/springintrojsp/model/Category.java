@@ -25,7 +25,7 @@ public class Category {
 
     @JsonProperty("textchannels")
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cat_id", referencedColumnName = "id")
+    @JoinColumn(name = "parentId", referencedColumnName = "id")
     private Collection<TextChannel> textchannels = new ArrayList<>();
 
     public Category() {

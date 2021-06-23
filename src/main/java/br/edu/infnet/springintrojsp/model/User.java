@@ -23,7 +23,7 @@ public class User {
     private String phoneNumber;
     private String profilePicture;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Server> servers = new ArrayList<>();
 
     public User() {

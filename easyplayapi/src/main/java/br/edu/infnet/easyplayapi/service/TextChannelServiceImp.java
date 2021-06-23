@@ -20,6 +20,11 @@ public class TextChannelServiceImp implements TextChannelService {
     }
 
     @Override
+    public void deleteById(String id) {
+        textChannelRepository.deleteById(id);
+    }
+
+    @Override
     public Iterable<TextChannel> getAll() {
         return textChannelRepository.findAll();
     }

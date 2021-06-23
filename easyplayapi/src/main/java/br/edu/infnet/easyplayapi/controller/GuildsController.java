@@ -10,19 +10,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.infnet.easyplayapi.model.Category;
-import br.edu.infnet.easyplayapi.model.Message;
 import br.edu.infnet.easyplayapi.model.Server;
 import br.edu.infnet.easyplayapi.model.TextChannel;
 import br.edu.infnet.easyplayapi.model.User;
 import br.edu.infnet.easyplayapi.service.CategoryService;
 import br.edu.infnet.easyplayapi.service.ServerService;
-import br.edu.infnet.easyplayapi.service.TextChannelService;
 import br.edu.infnet.easyplayapi.service.UserService;
 import br.edu.infnet.easyplayapi.util.IdGenerator;
 
 @RestController
-@RequestMapping(value = "/api/v1")
-public class ApiController {
+@RequestMapping(value = "/api/v1/guilds")
+public class GuildsController {
 
     @Autowired
     private UserService userService;
@@ -33,18 +31,7 @@ public class ApiController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private TextChannelService textChannelService;
-
-    @RequestMapping(value = "/channels/{channelid}/messages", method = RequestMethod.GET)
-    public TextChannel getTextChannelMessages(@PathVariable(name = "channelid") String channelid) {
-        Optional<TextChannel> textChannel = textChannelService.getById(channelid);
-        if (!textChannel.isPresent())
-            return new TextChannel();
-        return textChannel.get();
-    }
-
-    @RequestMapping(value = "/guilds/{serverid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{serverid}", method = RequestMethod.GET)
     public Server getGuildById(@PathVariable(name = "serverid") String serverid) {
         Optional<Server> server = serverService.getById(serverid);
         if (!server.isPresent())
@@ -52,31 +39,34 @@ public class ApiController {
         return server.get();
     }
 
-    @RequestMapping(value = "/channels/{channelid}/messages", method = RequestMethod.POST)
-    public Message createMessage(@PathVariable(name = "channelid") String channelid,
-            @RequestParam(name = "senderid") String senderid, @RequestParam(name = "content") String content) {
-
-        Optional<User> user = userService.getById(senderid);
-        Message message = new Message();
-
-        if (user.isPresent()) {
-            User uExists = user.get();
-            message.setId(IdGenerator.genId());
-            message.setSenderid(senderid);
-            message.setSender(uExists.getUsername());
-            message.setContent(content);
+    @RequestMapping(value = "/{serverid}/channels", method = RequestMethod.POST)
+    public TextChannel createChannel(@PathVariable("serverid") String serverid, @RequestParam(name = "name") String name, @RequestParam(name = "categoryId") String categoryId) {
+        
+        TextChannel textChannel = new TextChannel();
+        Optional<Category> category = categoryService.getById(categoryId);
+        if(category.isPresent()) {
+            Category cExists = category.get();
             
-            Optional<TextChannel> txtchannel = textChannelService.getById(channelid);
-            if(txtchannel.isPresent()) {
-                TextChannel updated = txtchannel.get();
-                updated.getMessages().add(message);
-                textChannelService.store(updated);
-            }
+            textChannel.setId(IdGenerator.genId());
+            textChannel.setName(name);
+            textChannel.setParentId(cExists.getId());
+            textChannel.setServerId(serverid);
+            cExists.getTextchannels().add(textChannel);
+            categoryService.store(cExists);
         }
-        return message;
+        return textChannel;
     }
 
-    @RequestMapping(value = "/guilds/{serverid}/join", method = RequestMethod.POST)
+    @RequestMapping(value = "/{serverid}/delete")
+    public void deleteGuild(@PathVariable("serverid") String serverid) {
+        Optional<Server> server = serverService.getById(serverid);
+
+        if(server.isPresent()) {
+            serverService.deleteById(serverid);
+        }
+    }
+
+    @RequestMapping(value = "/{serverid}/join", method = RequestMethod.POST)
     public Server joinGuild(@PathVariable(name = "serverid") String serverid, @RequestParam(name = "id") String id) {
         Optional<User> user = userService.getById(id);
         if(user.isPresent()) {
@@ -98,7 +88,7 @@ public class ApiController {
         return new Server();
     }
 
-    @RequestMapping(value = "/guilds", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public Server createGuild(@RequestParam(name = "name") String name, @RequestParam(name = "id") String id) {
         Optional<User> user = userService.getById(id);
         Server server = new Server();
@@ -117,6 +107,7 @@ public class ApiController {
 
             TextChannel txtchannel = new TextChannel();
             txtchannel.setId(IdGenerator.genId());
+            txtchannel.setServerId(server.getId());
             txtchannel.setName("Geral");
 
             category.getTextchannels().add(txtchannel);

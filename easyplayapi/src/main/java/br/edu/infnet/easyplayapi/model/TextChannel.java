@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,8 +19,13 @@ public class TextChannel {
     private String id;
 
     private String name;
+
+    @Column(name = "parentId", insertable = false, updatable = false)
+    private String parentId;
+
+    private String serverId;
     
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "ch_id", referencedColumnName = "id")
     private Collection<Message> messages = new ArrayList<>();
 
@@ -36,6 +42,22 @@ public class TextChannel {
 
     public String getName() {
         return name;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getServerId() {
+        return serverId;
+    }
+
+    public void setServerId(String serverId) {
+        this.serverId = serverId;
     }
 
     public void setName(String name) {

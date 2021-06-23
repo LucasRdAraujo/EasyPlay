@@ -7,5 +7,4 @@ import br.edu.infnet.easyplayapi.model.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, String> {
-    Category getCategoryById(String id);
 }

@@ -9,6 +9,7 @@ import br.edu.infnet.easyplayapi.model.TextChannel;
 @Service
 public interface TextChannelService {
     public void store(TextChannel textChannel);
+    public void deleteById(String id);
     public Iterable<TextChannel> getAll();
     public Optional<TextChannel> getById(String id);
 }

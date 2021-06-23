@@ -1,7 +1,5 @@
 package br.edu.infnet.springintrojsp.controller;
 
-import java.util.Collection;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.infnet.springintrojsp.controller.dto.ServerRegistrationDto;
 import br.edu.infnet.springintrojsp.model.Server;
 import br.edu.infnet.springintrojsp.model.TextChannel;
-// import br.edu.infnet.springintrojsp.model.Category;
-// import br.edu.infnet.springintrojsp.model.Server;
 import br.edu.infnet.springintrojsp.model.User;
-import br.edu.infnet.springintrojsp.service.IServerService;
-// import br.edu.infnet.springintrojsp.service.ServerService;
-// import br.edu.infnet.springintrojsp.service.TextChannelService;
+import br.edu.infnet.springintrojsp.service.IApiService;
 import br.edu.infnet.springintrojsp.service.UserService;
 
 @Controller
@@ -35,7 +28,7 @@ public class AppController {
     private UserService userService;
 
     @Autowired
-    private IServerService iServerService;
+    private IApiService iServerService;
 
     @ModelAttribute("serverDto")
     public ServerRegistrationDto userRegistrationDto() {
@@ -48,12 +41,13 @@ public class AppController {
     }
 
     @GetMapping({ "/app" })
-    public String getApp(Model model) {
+    public String app(Model model) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof UserDetails) {
             String email = ((UserDetails) principal).getUsername();
             User user = userService.getUserByEmail(email);
+
             if (user != null)
                 model.addAttribute("user", user);
             model.addAttribute("servers", user.getServers());
@@ -72,7 +66,7 @@ public class AppController {
             model.addAttribute("user", user);
             model.addAttribute("server", server);
         }
-        return "app";
+        return "guild";
     }
 
     @GetMapping({ "/{serverid}/{channelid}" })
@@ -88,9 +82,8 @@ public class AppController {
             model.addAttribute("user", user);
             model.addAttribute("server", server);
             model.addAttribute("channel", txtChannel);
-            
         }
-        return "app";
+        return "guild";
     }
 
     @RequestMapping(value = "/guilds", method = RequestMethod.POST)

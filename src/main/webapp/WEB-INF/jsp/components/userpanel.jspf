@@ -1,0 +1,17 @@
+<!-- Painel do usuário (deslogar e etc) fica em ambos -->
+
+<section class="user-panel">
+    <div class="user-panel-container">
+        <div class="user-name">
+            <span>${user.username}</span>
+        </div>
+        <div class="user-logout-container">
+            <form id="logoutForm" action="/logout" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+            </form>
+            <a onclick="document.forms['logoutForm'].submit()">
+                <button class="btn user-logout"><i class="fas fa-sign-out-alt"></i></button>
+            </a>
+        </div>
+    </div>
+</section>

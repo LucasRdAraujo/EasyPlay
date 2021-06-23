@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.infnet.springintrojsp.controller.dto.UserRegistrationDto;
 import br.edu.infnet.springintrojsp.model.User;
-import br.edu.infnet.springintrojsp.service.IServerService;
-// import br.edu.infnet.springintrojsp.service.UserService;
 import br.edu.infnet.springintrojsp.service.UserService;
 import br.edu.infnet.springintrojsp.util.IdGenerator;
 
@@ -27,9 +25,6 @@ public class SignUpController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private IServerService iServerService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;

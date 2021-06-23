@@ -1,6 +1,7 @@
 package br.edu.infnet.springintrojsp.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +12,7 @@ import br.edu.infnet.springintrojsp.model.Server;
 import br.edu.infnet.springintrojsp.model.TextChannel;
 
 @FeignClient(url = "localhost:8081/api/v1", name = "IServerService")
-public interface IServerService {
+public interface IApiService {
 
     // @GetMapping("/guilds/{serverid}")
     // public Server getGuildById(@PathVariable(name = "serverid") String serverid);
@@ -28,5 +29,12 @@ public interface IServerService {
 
     @PostMapping("/guilds")
     public Server createGuild(@RequestParam("name") String name, @RequestParam("id") String id);
+
+    @PostMapping("/guilds/{serverid}/channels")
+    public TextChannel createChannel(@RequestParam("serverid") String serverid, @RequestParam("name") String name,
+            @RequestParam("categoryId") String categoryId);
+
+    @DeleteMapping("/channels/{channelid}")
+    public void deleteChannel(@PathVariable(name = "channelid") String channelid);
 
 }

@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ServerRepository extends JpaRepository<Server, String> {
-    Server getServerById(String id);
 }

@@ -19,7 +19,7 @@ public class Category {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cat_id", referencedColumnName = "id")
+    @JoinColumn(name = "parentId", referencedColumnName = "id")
     private Collection<TextChannel> textchannels = new ArrayList<>();
 
     public String getId() {

@@ -1,6 +1,7 @@
 package br.edu.infnet.easyplayapi.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public List<Category> getById(String id) {
-        return categoryRepository.findAll().stream().filter(c -> c.getId().equals(id)).collect(Collectors.toList());
+    public Optional<Category> getById(String id) {
+        return categoryRepository.findById(id);
     }
     
 }
