@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -34,20 +35,16 @@ public class Server {
     private String serverBanner;
 
     @JsonProperty("members")
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "servers")
-    private Collection<User> members = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "server_id", referencedColumnName = "id")
+    private Collection<Member> members = new ArrayList<>();
 
     @JsonProperty("categories")
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sv_id", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "server_id", referencedColumnName = "id")
     private Collection<Category> categories = new ArrayList<>();
 
     public Server() {
-    }
-
-    public Server(String id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public String getId() {
@@ -74,11 +71,11 @@ public class Server {
         this.ownerId = ownerId;
     }
 
-    public Collection<User> getMembers() {
+    public Collection<Member> getMembers() {
         return members;
     }
 
-    public void setMembers(Collection<User> members) {
+    public void setMembers(Collection<Member> members) {
         this.members = members;
     }
 

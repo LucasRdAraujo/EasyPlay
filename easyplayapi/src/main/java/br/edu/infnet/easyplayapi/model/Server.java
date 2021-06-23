@@ -24,12 +24,16 @@ public class Server {
     private String serverBanner;
 
     @JsonManagedReference
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "servers")
-    private Collection<User> members = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "server_id", referencedColumnName = "id")
+    private Collection<Member> members = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sv_id", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "server_id", referencedColumnName = "id")
     private Collection<Category> categories = new ArrayList<>();
+
+    public Server() {
+    }
 
     public String getId() {
         return id;
@@ -63,11 +67,11 @@ public class Server {
         this.serverBanner = serverBanner;
     }
 
-    public Collection<User> getMembers() {
+    public Collection<Member> getMembers() {
         return members;
     }
 
-    public void setMembers(Collection<User> members) {
+    public void setMembers(Collection<Member> members) {
         this.members = members;
     }
 

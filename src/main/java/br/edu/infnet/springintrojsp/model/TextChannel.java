@@ -32,7 +32,7 @@ public class TextChannel {
     
     @JsonProperty("messages")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "ch_id", referencedColumnName = "id")
+    @JoinColumn(name = "channel_id", referencedColumnName = "id")
     private Collection<Message> messages = new ArrayList<>();
 
     public TextChannel() {

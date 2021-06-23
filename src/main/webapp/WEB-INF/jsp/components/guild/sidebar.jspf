@@ -26,12 +26,12 @@
                             <button class="btn"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
-                    <c:forEach items="${category.textchannels}" var="txtchannel">
+                    <c:forEach items="${category.textchannels}" var="textChannel">
                         <div class="default-container">
                             <div class="list-item">
                                 <div class="list-item-content">
-                                    <a href="/channels/${server.id}/${txtchannel.id}"
-                                        class="main-content">${txtchannel.name}</a>
+                                    <a href="/channels/${server.id}/${textChannel.id}"
+                                        class="main-content">${textChannel.name}</a>
                                 </div>
                             </div>
                         </div>

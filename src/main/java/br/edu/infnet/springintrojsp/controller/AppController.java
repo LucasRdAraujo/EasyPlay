@@ -74,14 +74,14 @@ public class AppController {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             String email = ((UserDetails) principal).getUsername();
-            User user = userService.getUserByEmail(email);
 
+            User user = userService.getUserByEmail(email);
             Server server = iServerService.joinGuild(serverid, user.getId());
-            TextChannel txtChannel = server.getTextChannelById(channelid);
+            TextChannel textChannel = server.getTextChannelById(channelid);
 
             model.addAttribute("user", user);
             model.addAttribute("server", server);
-            model.addAttribute("channel", txtChannel);
+            model.addAttribute("channel", textChannel);
         }
         return "guild";
     }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.infnet.easyplayapi.model.Category;
+import br.edu.infnet.easyplayapi.model.Member;
 import br.edu.infnet.easyplayapi.model.Server;
 import br.edu.infnet.easyplayapi.model.TextChannel;
 import br.edu.infnet.easyplayapi.model.User;
@@ -68,21 +69,28 @@ public class GuildsController {
 
     @RequestMapping(value = "/{serverid}/join", method = RequestMethod.POST)
     public Server joinGuild(@PathVariable(name = "serverid") String serverid, @RequestParam(name = "id") String id) {
-        
-        Optional<User> user = userService.getById(id);
-        if(user.isPresent()) {
-            User userExists = user.get();
+        Optional<User> userexist = userService.getById(id);
 
-            Optional<Server> server = serverService.getById(serverid);
-            if(server.isPresent()) {
-                Server serverExists = server.get();
+        if(userexist.isPresent()) {
+            User user = userexist.get();
 
-                if(!serverExists.memberExists(userExists.getId())) {
-                    serverExists.getMembers().add(userExists);
-                    userExists.getServers().add(serverExists);
-                    userService.store(userExists);
+            Optional<Server> serverexist = serverService.getById(serverid);
+            if(serverexist.isPresent()) {
+                Server server = serverexist.get();
+
+                if(!server.memberExists(user.getId())) {
+                    
+                    Member member = new Member();
+                    member.setId(user.getId());
+                    member.setUsername(user.getUsername());
+
+                    server.getMembers().add(member);
+                    serverService.store(server);
+
+                    user.getServers().add(server);
+                    userService.store(user);
                 }
-                return serverExists;
+                return server;
             }
             return new Server();
         }
@@ -91,34 +99,66 @@ public class GuildsController {
 
     @RequestMapping(method = RequestMethod.POST)
     public Server createGuild(@RequestParam(name = "name") String name, @RequestParam(name = "id") String id) {
-        Optional<User> user = userService.getById(id);
+        Optional<User> exist = userService.getById(id);
         Server server = new Server();
 
-        if (user.isPresent()) {
-            User uExists = user.get();
+        if (exist.isPresent()) {
+            User user = exist.get();
 
             server.setId(IdGenerator.genId());
+            server.setOwnerId(user.getId());
             server.setName(name);
-
-            server.setOwnerId(uExists.getId());
 
             Category category = new Category();
             category.setId(IdGenerator.genId());
             category.setName("Canais de texto");
+            
+            TextChannel textChannel = new TextChannel();
+            textChannel.setId(IdGenerator.genId());
+            textChannel.setServerId(server.getId());
+            textChannel.setParentId(category.getId());
+            textChannel.setName("Geral");
 
-            TextChannel txtchannel = new TextChannel();
-            txtchannel.setId(IdGenerator.genId());
-            txtchannel.setServerId(server.getId());
-            txtchannel.setName("Geral");
-
-            category.getTextchannels().add(txtchannel);
+            category.getTextchannels().add(textChannel);
             categoryService.store(category);
-
-            server.getMembers().add(uExists);
             server.getCategories().add(category);
-            uExists.getServers().add(server);
+
+            Member member = new Member();
+            member.setId(user.getId());
+            member.setUsername(user.getUsername());
+            
+            server.getMembers().add(member);
             serverService.store(server);
-            userService.store(uExists);
+
+            user.getServers().add(server);
+            userService.store(user);
+
+
+
+            // User uExists = user.get();
+
+            // server.setId(IdGenerator.genId());
+            // server.setName(name);
+
+            // server.setOwnerId(uExists.getId());
+
+            // Category category = new Category();
+            // category.setId(IdGenerator.genId());
+            // category.setName("Canais de texto");
+
+            // TextChannel txtchannel = new TextChannel();
+            // txtchannel.setId(IdGenerator.genId());
+            // txtchannel.setServerId(server.getId());
+            // txtchannel.setName("Geral");
+
+            // category.getTextchannels().add(txtchannel);
+            // categoryService.store(category);
+
+            // server.getMembers().add(uExists);
+            // server.getCategories().add(category);
+            // uExists.getServers().add(server);
+            // serverService.store(server);
+            // userService.store(uExists);
         }
         return server;
     }

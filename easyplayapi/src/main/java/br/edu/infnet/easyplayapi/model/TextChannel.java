@@ -26,7 +26,7 @@ public class TextChannel {
     private String serverId;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "ch_id", referencedColumnName = "id")
+    @JoinColumn(name = "channel_id", referencedColumnName = "id")
     private Collection<Message> messages = new ArrayList<>();
 
     public TextChannel() {

@@ -1,7 +1,7 @@
 <!-- Lista de servidores do usuario no app -->
 
 <script id="generate-LStorage" type="text/javascript">
-    localStorage.setItem('userLoggedIn', '{ "id": "${user.id}", "currentAction": { "channel": "${channel.id}" } }');
+    localStorage.setItem('userLoggedIn', '{ "id": "${user.id}", "currentAction": { "category": "${channel.parentId}", "channel": "${channel.id}" } }');
     document.querySelector("#generate-LStorage").remove();
 </script>
 
@@ -12,13 +12,12 @@
             <div id="chat-messages" class="body-scroller-inner">
                 <c:forEach items="${channel.messages}" var="message">
                     <div class="message min-h-message group-start message-wapper-p-left message-wrapper">
-                    <div class="message-content">
-                        <img src="${contextPath}/assets/imgs/photo.png"
-                            class="avatar" alt="">
-                        <h2 class="message-header">${message.sender}</h2>
-                        <div class="markup message-content">${message.content}</div>
+                        <div class="message-content">
+                            <img src="${contextPath}/assets/imgs/photo.png" class="avatar" alt="">
+                            <h2 class="message-header">${message.sender}</h2>
+                            <div class="markup message-content">${message.content}</div>
+                        </div>
                     </div>
-                </div>
                 </c:forEach>
             </div>
             <div class="scroller-divider"></div>

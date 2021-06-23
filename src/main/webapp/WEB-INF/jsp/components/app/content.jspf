@@ -7,12 +7,12 @@
                 <div class="servers-container">
                     <div class="servers-container-inner">
                         <div class="server-card-wrapper">
-                            <c:forEach items="${servers}" var="sv">
-                                <a href="${contextPath}/channels/${sv.id}">
+                            <c:forEach items="${servers}" var="server">
+                                <a href="${contextPath}/channels/${server.id}">
                                     <div class="card">
                                         <div class="card-server-banner">
                                         </div>
-                                        <div class="card-text">${sv.name}</div>
+                                        <div class="card-text">${server.name}</div>
                                     </div>
                                 </a>
                             </c:forEach>
