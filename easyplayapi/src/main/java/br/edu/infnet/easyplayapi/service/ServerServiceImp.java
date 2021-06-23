@@ -1,6 +1,8 @@
 package br.edu.infnet.easyplayapi.service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,11 @@ public class ServerServiceImp implements ServerService {
     @Override
     public Optional<Server> getById(String id) {
         return serverRepository.findById(id);
+    }
+
+    @Override
+    public List<Server> getServersByUserId(String id) {
+        return serverRepository.findAll().stream().filter(s -> s.memberExists(id)).collect(Collectors.toList());
     }
     
 }

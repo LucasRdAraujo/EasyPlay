@@ -1,5 +1,6 @@
 package br.edu.infnet.easyplayapi.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -12,4 +13,5 @@ public interface ServerService {
     public void deleteById(String id);
     public Iterable<Server> getAll();
     public Optional<Server> getById(String id);
+    public List<Server> getServersByUserId(String id);
 }

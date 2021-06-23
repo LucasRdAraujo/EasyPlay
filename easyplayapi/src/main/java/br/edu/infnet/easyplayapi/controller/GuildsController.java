@@ -1,5 +1,7 @@
 package br.edu.infnet.easyplayapi.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,20 @@ public class GuildsController {
         if (!server.isPresent())
             return new Server();
         return server.get();
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Server> getGuildByUserId(@RequestParam(name = "userId") String userId) {
+        Optional<User> exists = userService.getById(userId);
+
+        if(exists.isPresent()) {
+            User user = exists.get();
+            
+            List<Server> server = serverService.getServersByUserId(user.getId());
+            if(server != null)
+                return server;
+        }
+        return new ArrayList<>();
     }
 
     @RequestMapping(value = "/{serverid}/channels", method = RequestMethod.POST)

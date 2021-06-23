@@ -23,8 +23,12 @@ public class User {
     private String phoneNumber;
     private String profilePicture;
 
+<<<<<<< HEAD
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+=======
+    @ManyToMany(fetch = FetchType.EAGER)
+>>>>>>> parent of 661f2b4 (Corrigindo erros)
     private Collection<Server> servers = new ArrayList<>();
 
     public User() {

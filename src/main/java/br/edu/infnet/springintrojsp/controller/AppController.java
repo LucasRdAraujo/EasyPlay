@@ -28,7 +28,7 @@ public class AppController {
     private UserService userService;
 
     @Autowired
-    private IApiService iServerService;
+    private IApiService iApiService;
 
     @ModelAttribute("serverDto")
     public ServerRegistrationDto userRegistrationDto() {
@@ -50,7 +50,7 @@ public class AppController {
 
             if (user != null)
                 model.addAttribute("user", user);
-            model.addAttribute("servers", user.getServers());
+            model.addAttribute("servers", iApiService.getGuildsByUserId(user.getId()));
         }
         return "app";
     }
@@ -62,7 +62,7 @@ public class AppController {
             String email = ((UserDetails) principal).getUsername();
             User user = userService.getUserByEmail(email);
 
-            Server server = iServerService.joinGuild(serverid, user.getId());
+            Server server = iApiService.joinGuild(serverid, user.getId());
             model.addAttribute("user", user);
             model.addAttribute("server", server);
         }
@@ -76,7 +76,7 @@ public class AppController {
             String email = ((UserDetails) principal).getUsername();
 
             User user = userService.getUserByEmail(email);
-            Server server = iServerService.joinGuild(serverid, user.getId());
+            Server server = iApiService.joinGuild(serverid, user.getId());
             TextChannel textChannel = server.getTextChannelById(channelid);
 
             model.addAttribute("user", user);
@@ -93,7 +93,7 @@ public class AppController {
             String email = ((UserDetails) principal).getUsername();
             User user = userService.getUserByEmail(email);
             if (user != null) {
-                Server server = iServerService.createGuild(srdto.getName(), user.getId());
+                Server server = iApiService.createGuild(srdto.getName(), user.getId());
                 return new StringBuilder().append("redirect:/channels/").append(server.getId()).toString();
             }
         }
