@@ -68,6 +68,7 @@ public class GuildsController {
 
     @RequestMapping(value = "/{serverid}/join", method = RequestMethod.POST)
     public Server joinGuild(@PathVariable(name = "serverid") String serverid, @RequestParam(name = "id") String id) {
+        
         Optional<User> user = userService.getById(id);
         if(user.isPresent()) {
             User userExists = user.get();
@@ -116,6 +117,7 @@ public class GuildsController {
             server.getMembers().add(uExists);
             server.getCategories().add(category);
             uExists.getServers().add(server);
+            serverService.store(server);
             userService.store(uExists);
         }
         return server;
