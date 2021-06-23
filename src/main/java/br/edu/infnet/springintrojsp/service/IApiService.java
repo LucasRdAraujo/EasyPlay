@@ -1,5 +1,7 @@
 package br.edu.infnet.springintrojsp.service;
 
+import java.util.Collection;
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,27 +16,31 @@ import br.edu.infnet.springintrojsp.model.TextChannel;
 @FeignClient(url = "localhost:8081/api/v1", name = "IServerService")
 public interface IApiService {
 
-    // @GetMapping("/guilds/{serverid}")
-    // public Server getGuildById(@PathVariable(name = "serverid") String serverid);
+        // @GetMapping("/guilds/{serverid}")
+        // public Server getGuildById(@PathVariable(name = "serverid") String serverid);
 
-    @PostMapping("/guilds/{serverid}/join")
-    public Server joinGuild(@PathVariable(name = "serverid") String serverid, @RequestParam("id") String id);
+        @GetMapping("/guilds")
+        public Collection<Server> getGuildsByUserId(@RequestParam("userId") String userId);
 
-    @GetMapping("/channels/{channelid}/messages")
-    public TextChannel getTextChannelMessages(@PathVariable(name = "channelid") String channelid);
+        @PostMapping("/guilds/{serverid}/join")
+        public Server joinGuild(@PathVariable(name = "serverid") String serverid, @RequestParam("id") String id);
 
-    @PostMapping("/channels/{channelid}/messages")
-    public Message createMessage(@PathVariable(name = "channelid") String channelid,
-            @RequestParam(name = "senderid") String senderid, @RequestParam(name = "content") String content);
+        @GetMapping("/channels/{channelid}/messages")
+        public TextChannel getTextChannelMessages(@PathVariable(name = "channelid") String channelid);
 
-    @PostMapping("/guilds")
-    public Server createGuild(@RequestParam("name") String name, @RequestParam("id") String id);
+        @PostMapping("/channels/{channelid}/messages")
+        public Message createMessage(@PathVariable(name = "channelid") String channelid,
+                        @RequestParam(name = "senderid") String senderid,
+                        @RequestParam(name = "content") String content);
 
-    @PostMapping("/guilds/{serverid}/channels")
-    public TextChannel createChannel(@RequestParam("serverid") String serverid, @RequestParam("name") String name,
-            @RequestParam("categoryId") String categoryId);
+        @PostMapping("/guilds")
+        public Server createGuild(@RequestParam("name") String name, @RequestParam("id") String id);
 
-    @DeleteMapping("/channels/{channelid}")
-    public void deleteChannel(@PathVariable(name = "channelid") String channelid);
+        @PostMapping("/guilds/{serverid}/channels")
+        public TextChannel createChannel(@RequestParam("serverid") String serverid, @RequestParam("name") String name,
+                        @RequestParam("categoryId") String categoryId);
+
+        @DeleteMapping("/channels/{channelid}")
+        public void deleteChannel(@PathVariable(name = "channelid") String channelid);
 
 }

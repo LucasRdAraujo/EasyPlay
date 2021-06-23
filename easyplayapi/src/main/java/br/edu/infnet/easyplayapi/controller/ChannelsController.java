@@ -31,6 +31,7 @@ public class ChannelsController {
         Optional<TextChannel> textChannel = textChannelService.getById(channelid);
         if (!textChannel.isPresent())
             return new TextChannel();
+            
         return textChannel.get();
     }
 
