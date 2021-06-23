@@ -19,7 +19,7 @@ import br.edu.infnet.easyplayapi.util.IdGenerator;
 @RestController
 @RequestMapping(value = "/api/v1/channels")
 public class ChannelsController {
-    
+
     @Autowired
     private UserService userService;
 
@@ -35,12 +35,16 @@ public class ChannelsController {
     }
 
     @RequestMapping(value = "/{channelid}", method = RequestMethod.DELETE)
-    public void deleteChannel(@PathVariable("channelid") String channelid) {
-        Optional<TextChannel> textChannel = textChannelService.getById(channelid);
-        
-        if(textChannel.isPresent()) {
-            textChannelService.deleteById(channelid);
-        }
+    public TextChannel deleteChannel(@PathVariable("channelid") String channelid) {
+        Optional<TextChannel> textChannelExist = textChannelService.getById(channelid);
+        TextChannel textChannel = textChannelExist.get();
+
+        if (!textChannelExist.isPresent())
+            return new TextChannel();
+
+        textChannelService.deleteById(textChannel.getId());
+        return textChannel;
+
     }
 
     @RequestMapping(value = "/{channelid}/messages", method = RequestMethod.POST)
@@ -56,9 +60,9 @@ public class ChannelsController {
             message.setSenderid(senderid);
             message.setSender(uExists.getUsername());
             message.setContent(content);
-            
+
             Optional<TextChannel> txtchannel = textChannelService.getById(channelid);
-            if(txtchannel.isPresent()) {
+            if (txtchannel.isPresent()) {
                 TextChannel updated = txtchannel.get();
                 updated.getMessages().add(message);
                 textChannelService.store(updated);

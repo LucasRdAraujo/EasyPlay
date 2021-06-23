@@ -25,10 +25,12 @@
     </div>
 </div>
 
-<form id="messageForm" name="messageForm" nameForm="messageForm">
-    <div class="form">
-        <div class="text-input-area channel-text-area d-flex align-items-center">
-            <input name="" id="message-input" type="text" autocomplete="off" placeholder="Digite uma mensagem" />
+<c:if test="${not empty channel}">
+    <form id="messageForm" name="messageForm" nameForm="messageForm">
+        <div class="form">
+            <div class="text-input-area channel-text-area d-flex align-items-center">
+                <input name="" id="message-input" type="text" autocomplete="off" placeholder="Digite uma mensagem" />
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</c:if>

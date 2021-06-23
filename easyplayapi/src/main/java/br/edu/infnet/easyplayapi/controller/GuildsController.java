@@ -41,13 +41,14 @@ public class GuildsController {
     }
 
     @RequestMapping(value = "/{serverid}/channels", method = RequestMethod.POST)
-    public TextChannel createChannel(@PathVariable("serverid") String serverid, @RequestParam(name = "name") String name, @RequestParam(name = "categoryId") String categoryId) {
-        
+    public TextChannel createChannel(@PathVariable("serverid") String serverid,
+            @RequestParam(name = "name") String name, @RequestParam(name = "categoryId") String categoryId) {
+
         TextChannel textChannel = new TextChannel();
         Optional<Category> category = categoryService.getById(categoryId);
-        if(category.isPresent()) {
+        if (category.isPresent()) {
             Category cExists = category.get();
-            
+
             textChannel.setId(IdGenerator.genId());
             textChannel.setName(name);
             textChannel.setParentId(cExists.getId());
@@ -58,28 +59,19 @@ public class GuildsController {
         return textChannel;
     }
 
-    @RequestMapping(value = "/{serverid}/delete")
-    public void deleteGuild(@PathVariable("serverid") String serverid) {
-        Optional<Server> server = serverService.getById(serverid);
-
-        if(server.isPresent()) {
-            serverService.deleteById(serverid);
-        }
-    }
-
     @RequestMapping(value = "/{serverid}/join", method = RequestMethod.POST)
     public Server joinGuild(@PathVariable(name = "serverid") String serverid, @RequestParam(name = "id") String id) {
         Optional<User> userexist = userService.getById(id);
 
-        if(userexist.isPresent()) {
+        if (userexist.isPresent()) {
             User user = userexist.get();
 
             Optional<Server> serverexist = serverService.getById(serverid);
-            if(serverexist.isPresent()) {
+            if (serverexist.isPresent()) {
                 Server server = serverexist.get();
 
-                if(!server.memberExists(user.getId())) {
-                    
+                if (!server.memberExists(user.getId())) {
+
                     Member member = new Member();
                     member.setId(user.getId());
                     member.setUsername(user.getUsername());
@@ -112,7 +104,7 @@ public class GuildsController {
             Category category = new Category();
             category.setId(IdGenerator.genId());
             category.setName("Canais de texto");
-            
+
             TextChannel textChannel = new TextChannel();
             textChannel.setId(IdGenerator.genId());
             textChannel.setServerId(server.getId());
@@ -126,41 +118,23 @@ public class GuildsController {
             Member member = new Member();
             member.setId(user.getId());
             member.setUsername(user.getUsername());
-            
+
             server.getMembers().add(member);
             serverService.store(server);
 
             user.getServers().add(server);
             userService.store(user);
-
-
-
-            // User uExists = user.get();
-
-            // server.setId(IdGenerator.genId());
-            // server.setName(name);
-
-            // server.setOwnerId(uExists.getId());
-
-            // Category category = new Category();
-            // category.setId(IdGenerator.genId());
-            // category.setName("Canais de texto");
-
-            // TextChannel txtchannel = new TextChannel();
-            // txtchannel.setId(IdGenerator.genId());
-            // txtchannel.setServerId(server.getId());
-            // txtchannel.setName("Geral");
-
-            // category.getTextchannels().add(txtchannel);
-            // categoryService.store(category);
-
-            // server.getMembers().add(uExists);
-            // server.getCategories().add(category);
-            // uExists.getServers().add(server);
-            // serverService.store(server);
-            // userService.store(uExists);
         }
         return server;
+    }
+
+    @RequestMapping(value = "/{serverid}/delete", method = RequestMethod.DELETE)
+    public void deleteGuild(@PathVariable("serverid") String serverid) {
+        Optional<Server> server = serverService.getById(serverid);
+
+        if (server.isPresent()) {
+            serverService.deleteById(serverid);
+        }
     }
 
 }
