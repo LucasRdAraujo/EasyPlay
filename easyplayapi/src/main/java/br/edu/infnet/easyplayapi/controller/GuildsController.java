@@ -43,7 +43,7 @@ public class GuildsController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Server> getGuildByUserId(@RequestParam(name = "userId") String userId) {
+    public List<Server> getGuildsByUserId(@RequestParam(name = "userId") String userId) {
         Optional<User> exists = userService.getById(userId);
 
         if(exists.isPresent()) {

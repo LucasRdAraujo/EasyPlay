@@ -1,6 +1,7 @@
 <!-- Lista de servidores do usuario no app -->
 
 <script id="generate-LStorage" type="text/javascript">
+    console.log({ "id": "${user.id}", "currentAction": { "category": "${channel.parentId}", "channel": "${channel.id}" } });
     localStorage.setItem('userLoggedIn', '{ "id": "${user.id}", "currentAction": { "category": "${channel.parentId}", "channel": "${channel.id}" } }');
     document.querySelector("#generate-LStorage").remove();
 </script>

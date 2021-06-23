@@ -25,7 +25,6 @@ public class TextChannel {
     private String name;
 
     @JsonProperty("parentId")
-
     @Column(name = "parentId", insertable = false, updatable = false)
     private String parentId;
 
@@ -35,11 +34,6 @@ public class TextChannel {
     private Collection<Message> messages = new ArrayList<>();
 
     public TextChannel() {
-    }
-
-    public TextChannel(String id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public String getId() {
@@ -56,6 +50,14 @@ public class TextChannel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public Collection<Message> getMessages() {

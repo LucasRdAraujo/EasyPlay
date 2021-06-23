@@ -5,8 +5,11 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,9 +34,13 @@ public class Server {
     @JsonProperty("serverBanner")
     private String serverBanner;
 
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "server_id", referencedColumnName = "id")
+
     @JsonProperty("members")
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "server_id", referencedColumnName = "id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "server_members", joinColumns = { @JoinColumn(name = "server_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "member_id") })
     private Collection<Member> members = new ArrayList<>();
 
     @JsonProperty("categories")

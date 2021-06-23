@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,8 +25,11 @@ public class Server {
     private String serverBanner;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "server_id", referencedColumnName = "id")
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "server_id", referencedColumnName = "id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "server_members", joinColumns = { @JoinColumn(name = "server_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "member_id") })
     private Collection<Member> members = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
