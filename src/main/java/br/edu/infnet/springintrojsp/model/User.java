@@ -24,8 +24,12 @@ public class User {
     private String profilePicture;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+=======
+    @ManyToMany(fetch = FetchType.EAGER)
+>>>>>>> parent of 661f2b4 (Corrigindo erros)
 =======
     @ManyToMany(fetch = FetchType.EAGER)
 >>>>>>> parent of 661f2b4 (Corrigindo erros)

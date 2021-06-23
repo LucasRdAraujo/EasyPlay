@@ -77,6 +77,7 @@ public class GuildsController {
 
     @RequestMapping(value = "/{serverid}/join", method = RequestMethod.POST)
     public Server joinGuild(@PathVariable(name = "serverid") String serverid, @RequestParam(name = "id") String id) {
+<<<<<<< HEAD
         Optional<User> userexist = userService.getById(id);
 
         if (userexist.isPresent()) {
@@ -97,6 +98,20 @@ public class GuildsController {
 
                     user.getServers().add(server);
                     userService.store(user);
+=======
+        Optional<User> user = userService.getById(id);
+        if(user.isPresent()) {
+            User userExists = user.get();
+
+            Optional<Server> server = serverService.getById(serverid);
+            if(server.isPresent()) {
+                Server serverExists = server.get();
+
+                if(!serverExists.memberExists(userExists.getId())) {
+                    serverExists.getMembers().add(userExists);
+                    userExists.getServers().add(serverExists);
+                    userService.store(userExists);
+>>>>>>> parent of 661f2b4 (Corrigindo erros)
                 }
                 return server;
             }
@@ -130,6 +145,7 @@ public class GuildsController {
             category.getTextchannels().add(textChannel);
             categoryService.store(category);
             server.getCategories().add(category);
+<<<<<<< HEAD
 
             Member member = new Member();
             member.setId(user.getId());
@@ -140,6 +156,10 @@ public class GuildsController {
 
             user.getServers().add(server);
             userService.store(user);
+=======
+            uExists.getServers().add(server);
+            userService.store(uExists);
+>>>>>>> parent of 661f2b4 (Corrigindo erros)
         }
         return server;
     }

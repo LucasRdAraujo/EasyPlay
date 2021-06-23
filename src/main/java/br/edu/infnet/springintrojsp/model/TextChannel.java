@@ -31,9 +31,12 @@ public class TextChannel {
 
     @JsonProperty("messages")
 <<<<<<< HEAD
+<<<<<<< HEAD
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "channel_id", referencedColumnName = "id")
 =======
+=======
+>>>>>>> parent of 661f2b4 (Corrigindo erros)
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "ch_id", referencedColumnName = "id")
 >>>>>>> parent of 661f2b4 (Corrigindo erros)
