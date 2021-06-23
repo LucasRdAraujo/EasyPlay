@@ -30,16 +30,8 @@ public class TextChannel {
     private String parentId;
 
     @JsonProperty("messages")
-<<<<<<< HEAD
-<<<<<<< HEAD
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "channel_id", referencedColumnName = "id")
-=======
-=======
->>>>>>> parent of 661f2b4 (Corrigindo erros)
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ch_id", referencedColumnName = "id")
->>>>>>> parent of 661f2b4 (Corrigindo erros)
     private Collection<Message> messages = new ArrayList<>();
 
     public TextChannel() {

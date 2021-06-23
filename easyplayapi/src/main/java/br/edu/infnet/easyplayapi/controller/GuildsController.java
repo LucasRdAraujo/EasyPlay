@@ -1,7 +1,5 @@
 package br.edu.infnet.easyplayapi.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,20 +40,6 @@ public class GuildsController {
         return server.get();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Server> getGuildByUserId(@RequestParam(name = "userId") String userId) {
-        Optional<User> exists = userService.getById(userId);
-
-        if(exists.isPresent()) {
-            User user = exists.get();
-            
-            List<Server> server = serverService.getServersByUserId(user.getId());
-            if(server != null)
-                return server;
-        }
-        return new ArrayList<>();
-    }
-
     @RequestMapping(value = "/{serverid}/channels", method = RequestMethod.POST)
     public TextChannel createChannel(@PathVariable("serverid") String serverid,
             @RequestParam(name = "name") String name, @RequestParam(name = "categoryId") String categoryId) {
@@ -77,7 +61,6 @@ public class GuildsController {
 
     @RequestMapping(value = "/{serverid}/join", method = RequestMethod.POST)
     public Server joinGuild(@PathVariable(name = "serverid") String serverid, @RequestParam(name = "id") String id) {
-<<<<<<< HEAD
         Optional<User> userexist = userService.getById(id);
 
         if (userexist.isPresent()) {
@@ -98,20 +81,6 @@ public class GuildsController {
 
                     user.getServers().add(server);
                     userService.store(user);
-=======
-        Optional<User> user = userService.getById(id);
-        if(user.isPresent()) {
-            User userExists = user.get();
-
-            Optional<Server> server = serverService.getById(serverid);
-            if(server.isPresent()) {
-                Server serverExists = server.get();
-
-                if(!serverExists.memberExists(userExists.getId())) {
-                    serverExists.getMembers().add(userExists);
-                    userExists.getServers().add(serverExists);
-                    userService.store(userExists);
->>>>>>> parent of 661f2b4 (Corrigindo erros)
                 }
                 return server;
             }
@@ -145,7 +114,6 @@ public class GuildsController {
             category.getTextchannels().add(textChannel);
             categoryService.store(category);
             server.getCategories().add(category);
-<<<<<<< HEAD
 
             Member member = new Member();
             member.setId(user.getId());
@@ -156,10 +124,6 @@ public class GuildsController {
 
             user.getServers().add(server);
             userService.store(user);
-=======
-            uExists.getServers().add(server);
-            userService.store(uExists);
->>>>>>> parent of 661f2b4 (Corrigindo erros)
         }
         return server;
     }
